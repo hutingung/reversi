@@ -1,0 +1,39 @@
+/* Empty. Add your own CSS if you like */
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.board {
+  background-color: green;
+  border:1px;
+}
+
+
+.node {
+    width: 35px;
+    height: 35px;
+}
+
+.piece {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.white {
+    background: white;
+    border: 1px solid white;
+}
+
+.black {
+    background: black;
+    border: 1px solid black;
+}

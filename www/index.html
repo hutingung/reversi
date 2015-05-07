@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html  ng-app="reversi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <!--<link href="lib/ionic/css/ionic.css" rel="stylesheet">-->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+  
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  
+    <body ng-controller="MainCtrl">
+      <div ng-show="game">
+          <button ng-click="newGame()">NEW GAME</button>
+          <div>
+            <table class="board">
+              <tr class="row" ng-repeat="row in game.board track by $index">
+                <td class="cell" ng-repeat="column in row track by $index">
+                  <div class="node piece black" ng-show="column == 1"></div>
+                  <div class="node piece white" ng-show="column == 2"></div>
+                  <div class="node" ng-show="column == 0" ng-click="addMove($index, $parent.$index)"></div>
+                </td>
+              </tr>
+            </table>
+            <span>{{message}}</span>
+            <div>Next Player:<span ng-show="game.nextMove().color == 1">BLACK</span><span ng-show="game.nextMove().color == 2">WHITE</span></div>
+            <div>Current Result: WHITE ({{game.currentResult().white}}),BLACK ({{game.currentResult().black}}). Winner is ({{game.currentResult().winner()}})</div>
+          </div>
+      </div>
+      <div ng-show="!game"><h1>Loading...</h1></div>
+    </body>
+</html>
